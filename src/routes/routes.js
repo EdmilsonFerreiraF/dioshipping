@@ -1,10 +1,11 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import HomePage from './Pages/home';
-import Contatos from './Pages/contato';
+
+import HomePage from '../Pages/Home';
+import Contatos from '../Pages/Contato';
 
 const MainRoutes = () => {
-    return(
+    return (
         <Routes>
             <Route
                 path="/"

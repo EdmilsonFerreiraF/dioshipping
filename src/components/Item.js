@@ -1,8 +1,8 @@
 import React from 'react';
-import { ListItem, ListItemText } from '@material-ui/core/';
+import { ListItem, ListItemText } from '@mui/material';
 
 const Item = ({ name, details }) => {
-    return(
+    return (
         <ListItem>
             <ListItemText
                 primary={name}

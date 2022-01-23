@@ -1,19 +1,21 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Paper, Grid, Typography, List, makeStyles } from '@material-ui/core/';
+import { Paper, Grid, Typography, List } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+
 import Item from '../components/Item';
 import Card from '../components/Card';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      flexGrow: 1,
-      marginTop: '5px',
+        flexGrow: 1,
+        marginTop: '5px',
     },
     paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center'
+        padding: theme.spacing(2),
+        textAlign: 'center'
     },
-  }));
+}));
 
 const HomePage = () => {
     const products = useSelector(state => state.products)
@@ -21,30 +23,33 @@ const HomePage = () => {
 
     const categorys = products.map(
         category => {
-            const container = { };
+            const container = {};
+            
             container['id'] = category.id_categorys;
             container['name'] = category.name_categorys;
+
             return container;
         }
     )
 
     const category = categorys.map(JSON.stringify)
-                    .filter(function(item, index, arr){
-                        return arr.indexOf(item, index + 1) === -1;
-                    })
-                    .map(JSON.parse)
+        .filter(function (item, index, arr) {
+            return arr.indexOf(item, index + 1) === -1;
+        })
+        .map(JSON.parse)
 
     const arrayCategory = categorys.map(category => category.name)
-    let count = { };
+    let count = {};
 
-    for(let i = 0; i < arrayCategory.length; i++){
+    for (let i = 0; i < arrayCategory.length; i++) {
         {
             let key = arrayCategory[i];
+
             count[key] = (count[key] ? count[key] + 1 : 1)
         }
     }
 
-    return(
+    return (
         <Grid container spacing={3} className={classes.root}>
             <Grid item xs={3}>
                 <Paper className={classes.paper}>
@@ -56,8 +61,8 @@ const HomePage = () => {
                             category => {
                                 return (
                                     <Item
-                                        key = {category.id} 
-                                        name= {category.name}
+                                        key={category.id}
+                                        name={category.name}
                                         details={count[category.name]}
                                     />
                                 )
@@ -68,7 +73,7 @@ const HomePage = () => {
             </Grid>
             <Grid container xs={9} spacing={3} className={classes.root}>
                 {products.map(item => {
-                    return(
+                    return (
                         <Card
                             key={item.id_product}
                             product={item}
