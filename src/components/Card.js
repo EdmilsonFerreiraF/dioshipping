@@ -36,7 +36,7 @@ const Card = ({ product, children }) => {
 
                     <Button
                         variant="contained"
-                        onClick={handleAddItem(cart, product)}
+                        onClick={() => handleAddItem(cart, product)}
                     >
                         Adicionar
                     </Button>

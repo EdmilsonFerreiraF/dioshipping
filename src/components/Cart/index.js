@@ -66,14 +66,14 @@ const Cart = () => {
                                     {cart.Cart.map(item => {
                                         return (
                                             <tr key={item.id}>
-                                                <th><button onClick={handleDeleteItem(cart, item)} className="badge bg-danger"><i className="fas fa-window-close"></i></button></th>
+                                                <th><button onClick={() => handleDeleteItem(cart, item)} className="badge bg-danger"><i className="fas fa-window-close"></i></button></th>
                                                 <th><img className="img-fluid img-thumbnail" src={item.image} alt={item.Name} width="50px" /></th>
                                                 <th><span className="badge badge-pill bg-warning">
                                                     {item.quantity}
                                                 </span></th>
                                                 <th>R$ {item.price.toFixed(2)}</th>
-                                                <th><button onClick={handleAddItem(cart, item)} className="badge badge-pill bg-primary"><i className="fas fa-plus"></i></button></th>
-                                                <th><button onClick={handleRemoveItem(cart, item)} className="badge badge-pill bg-danger"><i className="fas fa-minus"></i></button></th>
+                                                <th><button onClick={() => handleAddItem(cart, item)} className="badge badge-pill bg-primary"><i className="fas fa-plus"></i></button></th>
+                                                <th><button onClick={() => handleRemoveItem(cart, item)} className="badge badge-pill bg-danger"><i className="fas fa-minus"></i></button></th>
                                                 <th>R$ {(item.price * item.quantity).toFixed(2)}</th>
                                             </tr>
                                         )
