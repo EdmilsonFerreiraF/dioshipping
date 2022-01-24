@@ -21,7 +21,7 @@ const Card = ({ product, children }) => {
         dispatch(Add(cart, item))
     }
     return (
-        <Grid item xs={3}>
+        <Grid item xs="auto">
             <Paper className={classes.paper}>
                 <Grid container direction='column'>
                     <Grid item>
