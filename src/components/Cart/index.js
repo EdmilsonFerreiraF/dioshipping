@@ -1,16 +1,19 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
-import cartActions from '../store/actions/cart';
+import Badge from '@mui/material/Badge';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { AddItem, RemoveItem, DeleteItem } from '../store/actions/cart';
 
 const Cart = () => {
     const cart = useSelector(state => state.cart)
     const dispatch = useDispatch();
 
     let totalPrice = 0;
+    console.log(cart.Cart)
 
     for (let i = 0; i < cart.Cart.length; i++) {
         totalPrice += (cart.Cart[i].price * cart.Cart[i].quantity)
+        console.log(cart.Cart)
     }
 
     if (cart.value > 0) {
@@ -18,25 +21,24 @@ const Cart = () => {
     }
 
     const handleDeleteItem = (cart, item) => {
-        dispatch(cartActions.DeleteItem(cart, item))
+        dispatch(DeleteItem(cart, item))
     }
 
     const handleRemoveItem = (cart, item) => {
-        dispatch(cartActions.RemoveItem(cart, item))
+        dispatch(RemoveItem(cart, item))
     }
 
     const handleAddItem = (cart, item) => {
-        dispatch(cartActions.AddItem(cart, item))
+        dispatch(AddItem(cart, item))
     }
 
     return (
         <>
-            <button type="button" className="btn btn-info" data-bs-toggle="modal" data-bs-target="#CartModal">
-                <span><i className="fas fa-shopping-cart"></i></span>
-                <span className="badge rounded-pill bg-info text-dark">
-                    {cart.value}
-                </span>
-            </button>
+            {/* <button type="button" className="btn btn-info" data-bs-toggle="modal" data-bs-target="#CartModal"> */}
+                <Badge badgeContent={cart.value} color="error" data-bs-toggle="modal" data-bs-target="#CartModal">
+                    <ShoppingCartIcon />
+                </Badge>
+            {/* </button> */}
 
             {/* Modal */}
             <div className="modal fade" id="CartModal" tabIndex="-1" aria-labelledby="CartModalLabel" aria-hidden="true">
@@ -49,7 +51,7 @@ const Cart = () => {
                             </button>
                         </div>
 
-                        <div className="modal-body table-responsive">
+                        <div className="modal-body table-responsive lead">
                             <table className="table table-hover">
                                 <thead>
                                     <tr>

@@ -3,7 +3,7 @@ import { Paper, Grid, Typography, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 import { useSelector, useDispatch } from 'react-redux';
-import cartActions from './store/actions/cart';
+import { Add } from './store/actions/cart';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -18,7 +18,7 @@ const Card = ({ product, children }) => {
     const classes = useStyles();
 
     const handleAddItem = (cart, item) => {
-        dispatch(cartActions.AddItem(cart, item))
+        dispatch(Add(cart, item))
     }
     return (
         <Grid item xs={3}>
